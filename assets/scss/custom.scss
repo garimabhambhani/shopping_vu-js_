@@ -1,0 +1,337 @@
+@font-face {
+    font-family: "Vazir";
+    src: url("./../fonts/vazir/Vazir-Light-UI.eot") format("embedded-opentype"),
+    url("./../fonts/vazir/Vazir-Light-UI.ttf") format("truetype"),
+    url("./../fonts/vazir/Vazir-Light-UI.woff") format("woff"),
+    url("./../fonts/vazir/Vazir-Light-UI.woff2") format("woff2");
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Vazir";
+    src: url("./../fonts/vazir/Vazir-Regular-UI.eot") format("embedded-opentype"),
+    url("./../fonts/vazir/Vazir-Regular-UI.ttf") format("truetype"),
+    url("./../fonts/vazir/Vazir-Regular-UI.woff") format("woff"),
+    url("./../fonts/vazir/Vazir-Regular-UI.woff2") format("woff2");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Vazir";
+    src: url("./../fonts/vazir/Vazir-Medium-UI.eot") format("embedded-opentype"),
+    url("./../fonts/vazir/Vazir-Medium-UI.ttf") format("truetype"),
+    url("./../fonts/vazir/Vazir-Medium-UI.woff") format("woff"),
+    url("./../fonts/vazir/Vazir-Medium-UI.woff2") format("woff2");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Vazir";
+    src: url("./../fonts/vazir/Vazir-Bold-UI.eot") format("embedded-opentype"),
+    url("./../fonts/vazir/Vazir-Bold-UI.ttf") format("truetype"),
+    url("./../fonts/vazir/Vazir-Bold-UI.woff") format("woff"),
+    url("./../fonts/vazir/Vazir-Bold-UI.woff2") format("woff2");
+    font-weight: 700;
+}
+html,body{
+    height: 100%;
+}
+body {
+    overflow-x: hidden !important;
+    font-family: 'Vazir', sans-serif;
+    background-color: $light;
+    height: 100%;
+}
+
+$fonts: (12: .75rem,
+    14: .875rem,
+    16: 1rem,
+    18: 1.125rem,
+    20: 1.25rem,
+    24: 1.5rem,
+    32: 2rem);
+
+@each $pixel,
+$rem in $fonts {
+    .font-#{$pixel} {
+        font-size: $rem !important;
+    }
+}
+
+@each $bp-name,
+$bp-pixels in $grid-breakpoints {
+
+    //looping through xs, sm, md, lg, xl and their pixel values
+    @each $pixel,
+    $rem in $fonts {
+        @media (min-width: $bp-pixels) {
+
+            //only works if the screen is wider than this
+            .font-#{$bp-name}-#{$pixel} {
+                //names like w-md-40
+                font-size: $rem !important;
+            }
+        }
+    }
+}
+
+a {
+    color: $secondary !important;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+.btn-primary {
+    font-size: 16px !important;
+
+    &:hover {
+        background-color: $primary-light !important;
+        color: $white !important;
+        border-color: $primary !important;
+    }
+}
+
+.nav-pills .nav-link.active {
+    color: $white !important;
+}
+.dir-rtl{
+    direction: rtl !important;
+}
+// for appHeader
+@mixin hoverCart {
+    color: $primary !important;
+    border: 1px solid $primary !important;
+    border-radius: 4px !important;
+}
+
+@mixin activeNavItem {
+    color: $primary !important;
+
+    svg {
+        color: $primary !important;
+    }
+
+    border-bottom: 1px solid $primary;
+}
+
+.navbar-light .navbar-toggler {
+    color: $secondary !important;
+}
+
+.navbar-toggler-icon {
+    color: $secondary !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.cart-icon,
+.auth-icon,
+.discount-btn {
+    border: 1px solid $white !important;
+    padding: 0 8px !important;
+    transition: all 0.5s linear;
+
+    &:hover {
+        @include hoverCart;
+    }
+}
+
+.shop-cart:hover {
+    .cart-icon {
+        @include hoverCart;
+    }
+}
+
+a.bg-white:hover,
+a.bg-white:focus,
+button.bg-white:hover,
+button.bg-white:focus {
+    background-color: $white !important;
+}
+
+.second-navbar {
+    .btn {
+        border: none;
+        border-radius: 0 !important;
+        border-bottom: 1px solid $white;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: $white !important;
+            box-shadow: none;
+        }
+
+        &:hover {
+            @include activeNavItem;
+        }
+    }
+}
+
+.active-navbar-item {
+    .btn {
+        @include activeNavItem;
+    }
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+    color: $primary !important;
+}
+
+.btn-toggle-nav a:hover {
+    color: $primary !important;
+}
+
+.navbar-item-secondary {
+    .btn-white {
+        background-color: $light !important;
+        border: none !important;
+        padding: .5rem 1rem !important;
+        margin-left: 0 !important;
+    }
+
+    .b-icon {
+        color: $secondary !important;
+    }
+}
+.checkout.btn-primary{
+    font-size: .75rem !important;
+    @media (min-width:576px) {
+        font-size: .875rem !important;
+    }
+    @media (min-width:768px) {
+        font-size: 1rem !important;
+    }
+}
+.lang-switch{
+    border-radius: 1.5rem;
+    .other-locale{
+        top: 25px;
+        left: 0;
+        li{
+            a{
+                &:hover{
+                    color: $primary !important;
+                }
+            }
+        }
+        &_active{
+            background-color: rgb(240, 255, 244) !important;
+            a{
+                color: $primary !important;
+            }
+        }
+    }
+}
+.lang-switch.lang-sm{
+    .other-locale{
+        bottom: 10px !important;
+        top: auto !important;
+    }
+}
+// for index page
+.swiper-pagination-bullet-active {
+    background: $primary !important;
+}
+
+.see-all-end {
+    &:hover {
+
+        .text-secondary,
+        .text-info {
+            color: $primary !important;
+        }
+    }
+}
+
+//for category component
+.category {
+    a {
+        &:hover {
+            background-color: $light !important;
+            color: $primary !important;
+        }
+    }
+}
+
+.category-sm {
+    z-index: 1;
+    border-top: solid 1px #ccc;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+
+    &-item {
+        &_cover {
+            svg {
+                fill: $secondary;
+            }
+        }
+
+        &:hover {
+            color: $primary !important;
+
+            &_cover {
+                color: $primary !important;
+
+                svg {
+                    fill: $primary !important;
+                }
+            }
+
+            svg {
+                fill: $primary !important;
+            }
+        }
+    }
+
+    &-item.active {
+        color: $primary-light !important;
+        &_cover {
+            color: $primary-light !important;
+
+            svg {
+                fill: $primary-light !important;
+            }
+        }
+        svg {
+            fill: $primary-light !important;
+        }
+    }
+}
+
+//for breadcrumb
+.breadcrumb {
+    position: relative;
+    z-index: 0;
+
+    a {
+        &:hover {
+            color: $primary !important;
+        }
+    }
+}
+
+//for second swipers
+.swiper-container-2,
+.swiper-container-4 {
+    .swiper-slide {
+        border-radius: 8px;
+        margin-right: 6px !important;
+        transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), transform .2s cubic-bezier(.4, 0, 1, 1), -webkit-box-shadow .2s cubic-bezier(.4, 0, 1, 1), -webkit-transform .2s cubic-bezier(.4, 0, 1, 1);
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px;
+            transform: translateY(-2px);
+        }
+    }
+}
+.swiper-button-next , .swiper-button-prev{
+    z-index: 2 !important;
+}
